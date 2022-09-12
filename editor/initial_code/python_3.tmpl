@@ -1,0 +1,23 @@
+{% comment %}New initial code template{% endcomment %}
+{% block env %}{% endblock env %}
+
+{% block start %}
+def sum_digits(num: int) -> int:
+    # your code here
+    return 0
+{% endblock start %}
+
+{% block example %}
+print('Example:')
+print(sum_digits(38))
+{% endblock %}
+
+{% block tests %}
+{% for t in tests %}
+assert {% block call %}sum_digits({{t.input|p_args}})
+{% endblock %} == {% block result %}{{t.answer|p}}{% endblock %}{% endfor %}
+{% endblock %}
+
+{% block final %}
+print("The mission is done! Click 'Check Solution' to earn rewards!")
+{% endblock final %}
