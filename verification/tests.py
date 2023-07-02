@@ -36,7 +36,7 @@ TESTS = {
         {
             "input": [702],
             "answer": 9
-        }
+        },
     ],
     "Extra": [
       {
@@ -58,6 +58,6 @@ TESTS = {
       {
           "input": [999999999],
           "answer": 9
-      }
+      },
     ]
 }
