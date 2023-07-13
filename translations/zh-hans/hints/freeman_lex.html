@@ -1,0 +1,133 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        我不知道如何开始解决这项任务。
+    </div>
+    <div class="answer">
+        <p>
+            点亮💡！我们的想法是将给定的<b class="code">num</b> 转换为<b class="code">str</b> 格式，然后将每个数字转换回<b class="code">int</b> 格式，求出这些数字之和，必要时重复。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        听起来很简单。我应该从什么开始？
+    </div>
+    <div class="answer">
+        <p>
+            一位数的最大值是<b class="code">9</b> 。因此您需要重复操作，直到<b class="code">num</b> 变小或等于<b class="code">9</b> 。对于这种任务，<a target="_blank" href="https://www.w3schools.com/python/python_while_loops.asp">while</a> 循环是最佳选择。
+        </p>
+        <pre class="brush: python">
+while num> 9:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        好的。现在帮我开始转换给定的数字。
+    </div>
+    <div class="answer">
+        <p>
+            正如我之前所说，您需要先将当前数字转换为<b class="code">string</b> 格式。使用内置的<a target="_blank" href="https://www.w3schools.com/python/ref_func_str.asp">str()</a> 函数进行转换。
+        </p>
+        <pre class="brush: python">
+str(num)
+        </pre>
+        <p>
+            <b class="code">string</b> 现在您可以遍历它并对每个字符进行操作。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如何将每个字符转换成整数？
+    </div>
+    <div class="answer">
+        <p>
+            最简单的方法是使用内置的<a target="_blank" href="https://www.w3schools.com/python/ref_func_map.asp">map()</a> 函数，参数为<a target="_blank" href="https://www.w3schools.com/python/ref_func_int.asp">int</a> 和上一条提示中的字符串。
+        </p>
+        <pre class="brush: python">
+map(int, str(num))
+        </pre>
+        <p>
+            该函数将字符串中的每个字符转换为<b class="code">int</b> 格式，并以<b class="code">map</b> 对象返回所有字符串。注意，在<b class="code">int</b> 附近没有括号。这是因为您引用的是函数，而不是调用它。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        我觉得差不多完成了，但还需要一些提示。
+    </div>
+    <div class="answer">
+        <p>
+            现在您有一个数字序列作为<b class="code">map</b> 对象。最酷的是，您可以使用该对象作为内置<a target="_blank" href="https://www.w3schools.com/python/ref_func_sum.asp">sum()</a> 函数的参数，而无需进一步转换！
+        </p>
+        <pre class="brush: python">
+sum(map(int, str(num)))
+        </pre>
+        <p>
+            它实际上是您新的<b class="code">num</b> ，因此请将计算结果赋值给<b class="code">while</b> 循环中的变量。 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        那么，我的最终解决方案应该是怎样的呢？
+    </div>
+    <div class="answer">
+        <p>
+            您只需将代码封装为函数表达式，并返回最后得到的<b class="code">num</b> 。强烈建议对输入和输出数据使用类型提示。
+        </p>
+        <p>以下是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def sum_digits(num: int) -> int:
+
+    while num> 9:
+        num = sum(map(int, str(num)))
+        
+    return num
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        向我展示更多解决方案！<br />
+        因为我想成为一个真正的 🥇 Python Ninnjaa！
+    </div>
+    <div class="answer">
+        <p>当然，抓住它！</p>
+        <p>
+            逻辑是一样的，但是使用递归来代替<b class="code">while</b> 循环。你用转换的参数调用同一个函数。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def sum_digits(num: int) -> int:
+
+    return sum_digits(sum(map(int, str(num)))) if num> 9 else num
+        </pre>
+        </div>
+        <p>
+            如果您懂数学，很多问题都会迎刃而解！如果数字不等于零，则数字之和等于模数除法的结果，否则<b class="code">9</b> 。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def sum_digits(num: int) -> int:
+
+    return num and (num % 9 or 9)
+        </pre>
+        </div>
+        <p>点击任务菜单中的<b>Best Solutions</b> ，可以看到很多其他有趣的解决方案！</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        谢谢！现在我知道并理解了更多！一切正常！
+    </div>
+    <div class="answer">
+        很高兴听到这个消息👍！
+    </div>
+</div>
+</body>
