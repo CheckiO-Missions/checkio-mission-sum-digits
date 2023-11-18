@@ -1,0 +1,133 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+    </div>
+    <div class="answer">
+        <p>
+            Licht an 💡! Die Idee ist, die angegebene <b class="code">num</b> in das Format <b class="code">str</b> umzuwandeln, dann jede Ziffer wieder in das Format <b class="code">int</b> umzuwandeln, die Summe dieser Ziffern zu finden und gegebenenfalls zu wiederholen.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Klingt einfach. Womit soll ich anfangen?
+    </div>
+    <div class="answer">
+        <p>
+            Die maximale Anzahl von einer Ziffer ist <b class="code">9</b>. Sie müssen also die Operationen so lange wiederholen, bis die <b class="code">num</b> kleiner oder gleich <b class="code">9</b> wird. Für diese Art von Aufgabe ist die <a target="_blank" href="https://www.w3schools.com/python/python_while_loops.asp">while</a> Schleife optimal.
+        </p>
+        <pre class="brush: python">
+while num> 9:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Nun gut. Jetzt helfen Sie mir, die angegebene Zahl umzurechnen.
+    </div>
+    <div class="answer">
+        <p>
+            Wie ich bereits sagte, müssen Sie Ihre aktuelle Zahl zunächst in das Format <b class="code">string</b> konvertieren. Verwenden Sie dazu die integrierte Funktion <a target="_blank" href="https://www.w3schools.com/python/ref_func_str.asp">str()</a>.
+        </p>
+        <pre class="brush: python">
+str(num)
+        </pre>
+        <p>
+            <b class="code">string</b> wird als Sequenz interpretiert, so dass Sie nun darüber iterieren und Operationen mit jedem Zeichen durchführen können.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie wandelt man jedes Zeichen zurück in eine Ganzzahl?
+    </div>
+    <div class="answer">
+        <p>
+            Am einfachsten ist es, die integrierte Funktion <a target="_blank" href="https://www.w3schools.com/python/ref_func_map.asp">map()</a> mit den Argumenten <a target="_blank" href="https://www.w3schools.com/python/ref_func_int.asp">int</a> und der Zeichenkette aus dem vorherigen Hinweis zu verwenden.
+        </p>
+        <pre class="brush: python">
+map(int, str(num))
+        </pre>
+        <p>
+            Diese wandelt jedes Zeichen der Zeichenkette in das Format <b class="code">int</b> um und gibt alles als <b class="code">map</b> Objekt zurück. Beachten Sie, dass sich neben <b class="code">int</b> keine Klammern befinden. Das liegt daran, dass Sie sich auf die Funktion beziehen und sie nicht aufrufen.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ich habe das Gefühl, dass es fast fertig ist, aber ich brauche noch einen Hinweis.
+    </div>
+    <div class="answer">
+        <p>
+            Jetzt haben Sie eine Folge von Ziffern als <b class="code">map</b> Objekt. Das Tolle daran ist, dass Sie dieses Objekt ohne weitere Konvertierung als Argument der integrierten Funktion <a target="_blank" href="https://www.w3schools.com/python/ref_func_sum.asp">sum()</a> verwenden können!
+        </p>
+        <pre class="brush: python">
+sum(map(int, str(num)))
+        </pre>
+        <p>
+            Es ist eigentlich Ihre neue <b class="code">num</b>. Weisen Sie also das Ergebnis der Berechnungen der Variablen in der Schleife <b class="code">while</b> zu. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie sollte also meine endgültige Lösung aussehen?
+    </div>
+    <div class="answer">
+        <p>
+            Sie müssen Ihren Code nur in einen Funktionsausdruck einpacken und das letzte Ergebnis <b class="code">num</b> zurückgeben. Die Verwendung von Typ-Hinweisen für Eingabe- und Ausgabedaten wird dringend empfohlen.
+        </p>
+        <p>Hier ist die gesamte Lösung:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def sum_digits(num: int) -> int:
+
+    while num> 9:
+        num = sum(map(int, str(num)))
+        
+    return num
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Zeigen Sie mir mehr Lösungen!<br />
+        denn ich möchte ein echter 🥇 Python Ninnjaa sein!
+    </div>
+    <div class="answer">
+        <p>Klar, schnapp sie dir!</p>
+        <p>
+            Die Logik ist die gleiche, aber anstelle der <b class="code">while</b> Schleife wird eine Rekursion verwendet. Sie rufen die gleiche Funktion mit umgewandeltem Argument auf.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def sum_digits(num: int) -> int:
+
+    return sum_digits(sum(map(int, str(num)))) if num> 9 else num
+        </pre>
+        </div>
+        <p>
+            Viele Aufgaben sind leicht zu lösen, wenn Sie Mathe beherrschen! Die Summe der Ziffern ist gleich dem Ergebnis der Modulo-Division, wenn sie ungleich Null ist, sonst <b class="code">9</b>.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def sum_digits(num: int) -> int:
+
+    return num and (num % 9 or 9)
+        </pre>
+        </div>
+        <p>Klicken Sie auf <b>Best Solutions</b> im Missionsmenü und sehen Sie sich viele andere interessante Lösungen an!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Vielen Dank! Ich weiß und verstehe jetzt mehr! Alles funktioniert bestens!
+    </div>
+    <div class="answer">
+        Freut mich zu hören 👍!
+    </div>
+</div>
+</body>
